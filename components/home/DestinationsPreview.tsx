@@ -9,10 +9,8 @@ export function DestinationsPreview() {
   const preview = DESTINATIONS.slice(0, 4);
 
   return (
-    <section className="py-20 md:py-28 bg-cream relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(13,79,79,0.04),transparent_50%)]" />
-
-      <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <SectionHeading
           home
           eyebrow="Explore"
@@ -28,7 +26,7 @@ export function DestinationsPreview() {
             >
               <Link
                 href={`/packages?destination=${dest.slug}`}
-                className="group block relative rounded-3xl overflow-hidden aspect-[4/5] card-premium hover:translate-y-0 hover:shadow-2xl hover:shadow-ocean/15"
+                className="group block relative rounded-3xl overflow-hidden aspect-[4/5] shadow-[0_2px_20px_rgba(15,23,42,0.08)] hover:shadow-[0_12px_40px_rgba(15,23,42,0.14)] transition-shadow duration-300"
               >
                 <Image
                   src={dest.image}
@@ -37,21 +35,31 @@ export function DestinationsPreview() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="280px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/30 to-navy/5" />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
+
+                {/* Badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 px-3 py-1 text-[11px] font-medium text-white/90">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 px-3 py-1 text-[11px] font-medium text-white/90">
                     <MapPin className="h-3 w-3" />
                     Andaman
                   </span>
                 </div>
+
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="font-heading text-2xl text-white mb-2 group-hover:text-coral transition-colors">
-                    {dest.name}
+                  <h3
+                    className="font-heading text-2xl text-white mb-2 transition-colors duration-300"
+                    style={{ color: "white" }}
+                  >
+                    <span className="group-hover:text-amber-300 transition-colors">{dest.name}</span>
                   </h3>
-                  <p className="text-white/65 text-sm line-clamp-2 mb-4 leading-relaxed">
+                  <p className="text-white/60 text-sm line-clamp-2 mb-4 leading-relaxed">
                     {dest.description}
                   </p>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-2 text-white text-xs font-semibold group-hover:bg-coral group-hover:border-coral transition-all duration-300">
+                  <span
+                    className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-white text-xs font-semibold transition-all duration-300 border border-white/20 group-hover:border-amber-400/60 backdrop-blur-sm"
+                    style={{ background: "rgba(255,255,255,0.08)" }}
+                  >
                     View packages
                     <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -63,7 +71,11 @@ export function DestinationsPreview() {
         <AnimatedSection className="text-center mt-12">
           <Link
             href="/destinations"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-ocean to-ocean-light px-8 py-3.5 text-white font-semibold shadow-lg shadow-ocean/20 hover:shadow-xl hover:shadow-ocean/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+            className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-white font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg"
+            style={{
+              background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%)",
+              boxShadow: "0 8px 24px rgba(10,115,115,0.3)",
+            }}
           >
             All Destinations
             <ArrowRight className="h-4 w-4" />

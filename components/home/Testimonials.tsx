@@ -5,8 +5,17 @@ import { StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 
 export function Testimonials() {
   return (
-    <section className="py-20 md:py-28 bg-sand relative">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+    <section
+      className="py-20 md:py-28 relative overflow-hidden"
+      style={{ background: "var(--stone)" }}
+    >
+      {/* Light texture blobs */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] opacity-30 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse, rgba(10,115,115,0.06), transparent 70%)" }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <SectionHeading
           home
           eyebrow="Reviews"
@@ -16,26 +25,36 @@ export function Testimonials() {
         <StaggerContainer className="grid gap-6 md:grid-cols-3">
           {TESTIMONIALS.map((t) => (
             <StaggerItem key={t.name}>
-              <blockquote className="card-premium rounded-3xl p-7 h-full flex flex-col relative">
-                <Quote className="absolute top-6 right-6 h-8 w-8 text-ocean/8" />
+              <blockquote className="card-premium rounded-3xl p-7 h-full flex flex-col relative bg-white">
+                {/* Large quote icon */}
+                <Quote
+                  className="absolute top-5 right-5 h-9 w-9 opacity-[0.06]"
+                  style={{ color: "var(--teal)" }}
+                />
+
+                {/* Stars */}
                 <div className="flex gap-1 mb-5">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-amber-400 text-amber-400"
-                    />
+                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-navy/75 leading-relaxed flex-1 text-[15px]">
+
+                <p className="text-slate-600 leading-relaxed flex-1 text-[15px]">
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <footer className="mt-6 pt-5 border-t border-ocean/5 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-ocean to-ocean-light text-white text-sm font-semibold">
+
+                <footer className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3">
+                  <span
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-white text-sm font-semibold shrink-0"
+                    style={{
+                      background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%)",
+                    }}
+                  >
                     {t.name.charAt(0)}
                   </span>
                   <div>
-                    <p className="font-semibold text-navy text-sm">{t.name}</p>
-                    <p className="text-xs text-navy/45">{t.location}</p>
+                    <p className="font-semibold text-slate-800 text-sm">{t.name}</p>
+                    <p className="text-xs text-slate-400">{t.location}</p>
                   </div>
                 </footer>
               </blockquote>

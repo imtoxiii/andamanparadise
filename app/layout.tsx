@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Luckiest_Guy, Henny_Penny } from "next/font/google";
+import { Plus_Jakarta_Sans, Luckiest_Guy, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -20,10 +20,11 @@ const luckiestGuy = Luckiest_Guy({
   display: "swap",
 });
 
-const hennyPenny = Henny_Penny({
-  variable: "--font-henny-penny",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -56,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${luckiestGuy.variable} ${hennyPenny.variable}`}
+      className={`${jakarta.variable} ${luckiestGuy.variable} ${playfair.variable}`}
     >
       <body className="min-h-screen antialiased">
         <Navbar />

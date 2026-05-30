@@ -1,17 +1,29 @@
 import Link from "next/link";
-import { type ReactNode } from "react";
+import { type ReactNode, type CSSProperties } from "react";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "whatsapp";
 
 const variants: Record<ButtonVariant, string> = {
-  primary:
-    "bg-coral text-white hover:bg-coral-dark shadow-lg shadow-coral/25",
-  secondary:
-    "bg-ocean text-white hover:bg-ocean-light shadow-lg shadow-ocean/25",
-  outline:
-    "border-2 border-ocean text-ocean hover:bg-ocean hover:text-white",
-  whatsapp:
-    "bg-[#25D366] text-white hover:bg-[#1fb855] shadow-lg shadow-[#25D366]/25",
+  primary:  "text-white shadow-lg hover:opacity-90",
+  secondary: "text-white shadow-lg hover:opacity-90",
+  outline:  "border-2 hover:text-white",
+  whatsapp: "bg-[#25D366] text-white hover:bg-[#1fb855] shadow-lg shadow-[#25D366]/25",
+};
+
+const variantStyles: Record<ButtonVariant, CSSProperties> = {
+  primary: {
+    background: "linear-gradient(135deg, var(--amber) 0%, var(--amber-dark) 100%)",
+    boxShadow: "0 4px 14px rgba(245,158,11,0.3)",
+  },
+  secondary: {
+    background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%)",
+    boxShadow: "0 4px 14px rgba(10,115,115,0.25)",
+  },
+  outline: {
+    borderColor: "var(--teal)",
+    color: "var(--teal)",
+  },
+  whatsapp: {},
 };
 
 type ButtonProps = {
@@ -35,6 +47,7 @@ export function Button({
     "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]";
 
   const classes = `${base} ${variants[variant]} ${className}`;
+  const style = variantStyles[variant];
 
   const isExternal =
     external || href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:");
@@ -46,6 +59,7 @@ export function Button({
         target={href.startsWith("http") ? "_blank" : undefined}
         rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
         className={classes}
+        style={style}
       >
         {icon}
         {children}
@@ -54,7 +68,7 @@ export function Button({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} className={classes} style={style}>
       {icon}
       {children}
     </Link>

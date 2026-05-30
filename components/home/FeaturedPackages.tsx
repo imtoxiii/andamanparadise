@@ -29,7 +29,8 @@ export function FeaturedPackages() {
         <AnimatedSection className="text-center mt-12">
           <Link
             href="/packages"
-            className="inline-flex items-center gap-2 text-ocean font-semibold hover:text-coral transition-colors"
+            className="inline-flex items-center gap-2 font-semibold transition-colors hover:opacity-75"
+            style={{ color: "var(--teal)" }}
           >
             View All Packages
             <ArrowRight className="h-4 w-4" />
