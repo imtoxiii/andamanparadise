@@ -26,7 +26,7 @@ export const DESTINATIONS: Destination[] = [
       "A quieter paradise with Bharatpur Beach, natural rock formations, and laid-back village charm.",
     highlights: ["Bharatpur Beach", "Natural Bridge", "Snorkeling"],
     image:
-      "https://images.unsplash.com/photo-1519046909882-9b02a989a880?w=800&q=80",
+      "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80",
   },
   {
     id: "port-blair",

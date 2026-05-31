@@ -9,16 +9,16 @@ export function FinalCTA() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       <Image
-        src="https://images.unsplash.com/photo-1519046909882-9b02a989a880?w=1920&q=80"
-        alt="Andaman sunset"
+        src="https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=1920&q=80"
+        alt="Beautiful Andaman sunset beach"
         fill
         className="object-cover"
         sizes="100vw"
       />
       {/* Clean dark overlay — not gradient heavy */}
       <div className="absolute inset-0 bg-slate-900/65" />
-      {/* Amber warm glow bottom */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(245,158,11,0.18),transparent_60%)]" />
+      {/* Dark warm glow bottom */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(10,115,115,0.18),transparent_60%)]" />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 md:px-8 text-center">
         <AnimatedSection>
@@ -30,9 +30,9 @@ export function FinalCTA() {
             Limited Spots Available
           </span>
 
-          <h2 className="font-hero font-bold text-white text-3xl md:text-5xl lg:text-6xl mb-5 leading-tight">
+          <h2 className="font-heading font-bold text-white text-4xl md:text-5xl lg:text-7xl mb-5 leading-tight tracking-tight">
             Ready for Your{" "}
-            <span style={{ color: "var(--amber-light)" }} className="italic">
+            <span className="text-white/80">
               Andaman
             </span>{" "}
             Adventure?

@@ -82,7 +82,7 @@ export function DestinationCard({
   return (
     <AnimatedSection delay={index * 0.06}>
       <article className="group card-premium flex flex-col overflow-hidden rounded-3xl h-full">
-        <div className="relative h-52 overflow-hidden">
+        <div className="relative h-64 overflow-hidden">
           <Image
             src={destination.image}
             alt={destination.name}

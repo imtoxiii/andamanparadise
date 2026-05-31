@@ -12,12 +12,11 @@ const variants: Record<ButtonVariant, string> = {
 
 const variantStyles: Record<ButtonVariant, CSSProperties> = {
   primary: {
-    background: "linear-gradient(135deg, var(--amber) 0%, var(--amber-dark) 100%)",
-    boxShadow: "0 4px 14px rgba(245,158,11,0.3)",
+    background: "linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%)",
   },
   secondary: {
     background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%)",
-    boxShadow: "0 4px 14px rgba(10,115,115,0.25)",
+    boxShadow: "0 4px 14px rgba(15,23,42,0.15)",
   },
   outline: {
     borderColor: "var(--teal)",

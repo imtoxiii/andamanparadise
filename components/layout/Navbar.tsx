@@ -50,7 +50,7 @@ export function Navbar() {
             </span>
             <div>
               <span
-                className={`font-heading text-lg leading-none block tracking-tight transition-colors ${
+                className={`font-nav text-lg leading-none block tracking-tight transition-colors ${
                   scrolled ? "text-slate-900" : "text-white"
                 }`}
               >
@@ -111,8 +111,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               style={{
-                background: "linear-gradient(135deg, var(--amber) 0%, var(--amber-dark) 100%)",
-                boxShadow: "0 4px 14px rgba(245,158,11,0.35)",
+                background: "linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%)",
               }}
             >
               <MessageCircle className="h-4 w-4" />
@@ -123,7 +122,7 @@ export function Navbar() {
           {/* Mobile hamburger */}
           <button
             type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setMobileOpen(true)}
             className={`md:hidden p-2.5 rounded-xl transition-colors ${
               scrolled
                 ? "text-slate-700 hover:bg-teal/6"
@@ -131,81 +130,99 @@ export function Navbar() {
             }`}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Menu className="h-6 w-6" />
           </button>
         </nav>
       </header>
 
-      {/* Mobile drawer */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
+      {/* Mobile Full-Screen Menu */}
+      <div 
+        className={`fixed inset-0 z-[100] bg-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col md:hidden ${
+          mobileOpen ? "opacity-100 pointer-events-auto visible" : "opacity-0 pointer-events-none invisible"
+        }`}
+      >
+        {/* Top bar inside menu */}
+        <div className="flex items-center justify-between px-4 py-6">
+          <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
+            <span
+              className="flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-md"
+              style={{ background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%)" }}
+            >
+              <Palmtree className="h-5 w-5" />
+            </span>
+            <span className="font-nav text-xl text-slate-900 tracking-tight uppercase">
+              {SITE.name}
+            </span>
+          </Link>
           <button
             type="button"
-            className="absolute inset-0 bg-navy/50 backdrop-blur-sm"
             onClick={() => setMobileOpen(false)}
-            aria-label="Close menu"
-          />
-          <div className="absolute top-0 right-0 h-full w-[min(100%,320px)] bg-white shadow-2xl">
-            <div className="flex flex-col h-full pt-20 px-6 pb-8">
-              {/* Brand in drawer */}
-              <div className="flex items-center gap-3 mb-8 pb-6 border-b border-slate-100">
-                <span
-                  className="flex h-10 w-10 items-center justify-center rounded-xl text-white"
-                  style={{ background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%)" }}
-                >
-                  <Palmtree className="h-5 w-5" />
-                </span>
-                <span className="font-heading text-base text-slate-900">{SITE.name}</span>
-              </div>
+            className="flex items-center gap-1.5 px-3 py-2 text-slate-900 hover:text-slate-500 transition-colors rounded-full hover:bg-slate-100"
+          >
+            <span className="text-sm font-bold tracking-widest uppercase mt-0.5">Close</span>
+            <X className="h-5 w-5" />
+          </button>
+        </div>
 
-              <ul className="flex flex-col gap-1">
-                {NAV_LINKS.map((link) => {
-                  const active = pathname === link.href;
-                  return (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className={`block rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
-                          active
-                            ? "text-white"
-                            : "text-slate-700 hover:bg-teal/6"
-                        }`}
-                        style={active ? { background: "var(--teal)", color: "white" } : undefined}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+        {/* Navigation Links */}
+        <div className="flex-1 flex flex-col justify-center px-6 text-center">
+          <ul className="flex flex-col items-center gap-6">
+            {NAV_LINKS.map((link, i) => {
+              const active = pathname === link.href;
+              return (
+                <li key={link.href} className="overflow-hidden py-1">
+                  <Link
+                    href={link.href}
+                    className={`inline-block font-nav text-5xl sm:text-6xl uppercase tracking-tight transition-colors ${
+                      active ? "marker-green" : "text-slate-900 hover:text-teal"
+                    }`}
+                    style={{
+                      transform: mobileOpen ? "translateY(0)" : "translateY(100%)",
+                      opacity: mobileOpen ? 1 : 0,
+                      transition: `transform 500ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 80 + 100}ms, opacity 500ms ease ${i * 80 + 100}ms`
+                    }}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
-              <div className="mt-auto space-y-3 pt-6 border-t border-slate-100">
-                <a
-                  href={`tel:${SITE.phone}`}
-                  className="flex items-center justify-center gap-2 rounded-xl border-2 py-3.5 font-semibold transition-colors"
-                  style={{ borderColor: "var(--teal)", color: "var(--teal)" }}
-                >
-                  <Phone className="h-4 w-4" />
-                  {SITE.phone}
-                </a>
-                <a
-                  href={whatsappUrl(generalEnquiryMessage())}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full rounded-xl py-3.5 text-white font-semibold shadow-lg"
-                  style={{
-                    background: "linear-gradient(135deg, var(--amber) 0%, var(--amber-dark) 100%)",
-                    boxShadow: "0 4px 14px rgba(245,158,11,0.3)",
-                  }}
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Book on WhatsApp
-                </a>
-              </div>
+        {/* Bottom CTA & Info */}
+        <div className="px-6 pb-12">
+          <div 
+            className="flex flex-col items-center gap-5 border-t border-slate-200 pt-8"
+            style={{
+              transform: mobileOpen ? "translateY(0)" : "translateY(20px)",
+              opacity: mobileOpen ? 1 : 0,
+              transition: `transform 500ms ease 400ms, opacity 500ms ease 400ms`
+            }}
+          >
+            <div className="flex flex-col items-center gap-1 text-center">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Keep in touch</span>
+              <a href={`tel:${SITE.phone}`} className="text-lg font-semibold text-slate-900 hover:text-teal transition-colors">
+                {SITE.phone}
+              </a>
             </div>
+            
+            <a
+              href={whatsappUrl(generalEnquiryMessage())}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full rounded-2xl py-4 px-8 text-white font-semibold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+              style={{
+                background: "linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%)",
+              }}
+            >
+              <MessageCircle className="h-5 w-5" />
+              Book on WhatsApp
+            </a>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

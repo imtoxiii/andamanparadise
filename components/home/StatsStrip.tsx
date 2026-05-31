@@ -29,7 +29,7 @@ export function StatsStrip() {
                     <p
                       className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold leading-none"
                       style={{
-                        background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 60%, var(--amber) 100%)",
+                        background: "linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",

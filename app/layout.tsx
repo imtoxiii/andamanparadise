@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Luckiest_Guy, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Oswald, Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { StickyBookBar } from "@/components/layout/StickyBookBar";
+import { InkPageTransition } from "@/components/layout/InkPageTransition";
 import { SITE } from "@/lib/data/site";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -13,10 +14,17 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const luckiestGuy = Luckiest_Guy({
-  variable: "--font-luckiest-guy",
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -57,13 +65,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${luckiestGuy.variable} ${playfair.variable}`}
+      className={`${jakarta.variable} ${oswald.variable} ${outfit.variable} ${playfair.variable}`}
     >
+      <head>
+        {/* Preload the transition sprite to prevent first-load lag */}
+        <link rel="preload" href="/ink-black.png" as="image" type="image/png" />
+      </head>
       <body className="min-h-screen antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
         <StickyBookBar />
+        <InkPageTransition />
       </body>
     </html>
   );

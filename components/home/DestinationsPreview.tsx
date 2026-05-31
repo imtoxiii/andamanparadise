@@ -10,7 +10,7 @@ export function DestinationsPreview() {
 
   return (
     <section className="py-20 md:py-28 bg-white relative overflow-hidden">
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative mx-auto max-w-[85rem] px-4 md:px-8">
         <SectionHeading
           home
           eyebrow="Explore"
@@ -22,11 +22,11 @@ export function DestinationsPreview() {
             <AnimatedSection
               key={dest.id}
               delay={i * 0.08}
-              className="min-w-[280px] md:min-w-0"
+              className="min-w-[300px] md:min-w-0"
             >
               <Link
                 href={`/packages?destination=${dest.slug}`}
-                className="group block relative rounded-3xl overflow-hidden aspect-[4/5] shadow-[0_2px_20px_rgba(15,23,42,0.08)] hover:shadow-[0_12px_40px_rgba(15,23,42,0.14)] transition-shadow duration-300"
+                className="group block relative rounded-3xl overflow-hidden aspect-[3/4] shadow-[0_2px_20px_rgba(15,23,42,0.08)] hover:shadow-[0_12px_40px_rgba(15,23,42,0.14)] transition-shadow duration-300"
               >
                 <Image
                   src={dest.image}
@@ -51,13 +51,13 @@ export function DestinationsPreview() {
                     className="font-heading text-2xl text-white mb-2 transition-colors duration-300"
                     style={{ color: "white" }}
                   >
-                    <span className="group-hover:text-amber-300 transition-colors">{dest.name}</span>
+                    <span className="group-hover:text-teal-400 transition-colors">{dest.name}</span>
                   </h3>
                   <p className="text-white/60 text-sm line-clamp-2 mb-4 leading-relaxed">
                     {dest.description}
                   </p>
                   <span
-                    className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-white text-xs font-semibold transition-all duration-300 border border-white/20 group-hover:border-amber-400/60 backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-white text-xs font-semibold transition-all duration-300 border border-white/20 group-hover:border-teal-400/60 backdrop-blur-sm"
                     style={{ background: "rgba(255,255,255,0.08)" }}
                   >
                     View packages

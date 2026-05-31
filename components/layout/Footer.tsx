@@ -10,7 +10,7 @@ export function Footer() {
       <div
         className="h-1 w-full"
         style={{
-          background: "linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 50%, var(--amber) 100%)",
+          background: "linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 50%, var(--navy) 100%)",
         }}
       />
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
@@ -34,7 +34,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-heading mb-5 text-sm uppercase tracking-[0.15em]" style={{ color: "var(--amber)" }}>
+            <h3 className="font-heading mb-5 text-sm uppercase tracking-[0.15em] text-white/80">
               Quick Links
             </h3>
             <ul className="space-y-2.5">
@@ -53,7 +53,7 @@ export function Footer() {
 
           {/* Popular Packages */}
           <div>
-            <h3 className="font-heading mb-5 text-sm uppercase tracking-[0.15em]" style={{ color: "var(--amber)" }}>
+            <h3 className="font-heading mb-5 text-sm uppercase tracking-[0.15em] text-white/80">
               Popular Packages
             </h3>
             <ul className="space-y-2.5 text-sm text-white/60">
@@ -74,22 +74,22 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading mb-5 text-sm uppercase tracking-[0.15em]" style={{ color: "var(--amber)" }}>
+            <h3 className="font-heading mb-5 text-sm uppercase tracking-[0.15em] text-white/80">
               Contact Us
             </h3>
             <ul className="space-y-3.5 text-sm text-white/60">
               <li className="flex items-start gap-2.5">
-                <MapPin className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "var(--amber)" }} />
+                <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-white/60" />
                 {SITE.address}
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 shrink-0" style={{ color: "var(--amber)" }} />
+                <Phone className="h-4 w-4 shrink-0 text-white/60" />
                 <a href={`tel:${SITE.phone}`} className="hover:text-white transition-colors">
                   {SITE.phone}
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 shrink-0" style={{ color: "var(--amber)" }} />
+                <Mail className="h-4 w-4 shrink-0 text-white/60" />
                 <a href={`mailto:${SITE.email}`} className="hover:text-white transition-colors">
                   {SITE.email}
                 </a>

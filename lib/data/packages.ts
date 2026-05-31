@@ -60,7 +60,7 @@ export const PACKAGES: TravelPackage[] = [
     ],
     badge: "Popular",
     image:
-      "https://images.unsplash.com/photo-1478144592103-25e218a0481c?w=800&q=80",
+      "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=800&q=80",
     description:
       "Kid-friendly itinerary with beaches, history, and boat rides — fun for all ages.",
   },
@@ -83,7 +83,7 @@ export const PACKAGES: TravelPackage[] = [
     ],
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1682687220063-4742bd5fd3bb?w=800&q=80",
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
     description:
       "For thrill-seekers — scuba, kayaking, caves, and treks across the best of Andaman.",
   },
